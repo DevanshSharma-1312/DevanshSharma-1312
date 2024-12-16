@@ -11,6 +11,10 @@ import drinksImage from './assets/drinks.png';
 import bannerImage from './assets/banner.png'; // Assuming a banner image exists
 import 'slick-carousel/slick/slick.css'; // Import slick carousel styles
 import 'slick-carousel/slick/slick-theme.css';
+// import bannerImage from './assets/banner.png';
+import bannerImage2 from './assets/banner2.jpg'
+
+import {useNavigate} from 'react-router-dom'; 
 // import banner1 from './assets/banner1.jpg'; // Example banner images
 // import banner2 from './assets/banner2.jpg';
 // import banner3 from './assets/banner3.jpg';
@@ -19,7 +23,7 @@ import 'slick-carousel/slick/slick-theme.css';
 
 const HomePage = () => {
 
-
+const navigate = useNavigate();
 
     // const settings = {
     //     dots: true,
@@ -36,6 +40,7 @@ const HomePage = () => {
 
 
 
+    const images = [bannerImage, bannerImage2, bannerImage,bannerImage2]; 
     return (
         <div className="homepage-container">
             {/* Navigation Bar */}
@@ -47,18 +52,34 @@ const HomePage = () => {
                     <a href="#contact">Contact Us</a>
                 </div>
                 <div className="auth-buttons">
-                    <button className="login-btn">Login</button>
-                    <button className="signup-btn">Sign Up</button>
+                    <button  onClick={() => navigate('/auth')}
+          className="login-btn bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition duration-300"
+        >Login</button>
+
+
+                    <button  onClick={() => navigate('/auth')}
+          className="login-btn bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition duration-300"
+        >Sign Up</button>
+
+
                 </div>
             </nav>
 
             Banner Section
-      <div className="banner">
+      {/* <div className="banner">
         <img
           src={bannerImage} // Use banner image from the repo
           alt="Market"
           className="banner-image"
         />
+      </div> */}
+
+      <div className="relative w-full h-64 overflow-hidden mt-5">
+        <div className="absolute w-full h-full flex animate-marquee space-x-4">
+          {images.map((image, index) => (
+            <img key={index} src={image} alt="Market" className="w-full h-64 object-cover rounded-lg transition-transform duration-500 ease-in-out hover:scale-105" />
+          ))}
+        </div>
       </div>
 
 
