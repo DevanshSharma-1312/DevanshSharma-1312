@@ -1,23 +1,46 @@
-import React, { useContext } from 'react';
+import React, { useState,useContext } from 'react';
 import './ProductDisplay.css';
 import star_icon from '../assets/images/star_icon.png';
 import stardull_icon from '../assets/images/star_dull_icon.png';
 import { ShopContext } from '../../Context/ShopContext';
 
+
 const ProductDisplay = (props) => {
-    const {product} = props;
-    const {addToCart} = useContext(ShopContext);
+  const { product } = props;
+  const { addToCart } = useContext(ShopContext);
+
+ 
+  const [isHovered, setIsHovered] = useState(false);
+
   return (
     <div className='productdisplay'>
       <div className="productdisplay-left">
-        <div className="productdisplay-img-list">
+        <div 
+          className="productdisplay-img-list" 
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+        >
             <img src={product.image} alt="" />
             <img src={product.image} alt="" />
             <img src={product.image} alt="" />
             <img src={product.image} alt="" />
         </div>
-        <div className="productdisplay-img">
+        <div 
+          className="productdisplay-img"
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+        >
             <img src={product.image} alt="" className="productdisplay-main-img" />
+            
+            {/* Display '+' button when hovered */}
+            {isHovered && (
+              <button 
+                className="add-to-cart-btn" 
+                onClick={() => addToCart(product.id)}
+              >
+                +
+              </button>
+            )}
         </div>
       </div>
       <div className="productdisplay-right">
@@ -49,12 +72,17 @@ const ProductDisplay = (props) => {
                 <div>5kg</div>
             </div>
         </div>
-        <button onClick={()=>{addToCart(product.id)}}>ADD TO CART</button>
-        <p className='productdisplay-right-category'><span>About the product :</span>Fresh product, In-budget, From local Market</p>
-        <p className='productdisplay-right-category'><span>Other Info :</span>Product ID: {product.id}</p>
+        {/* Add to cart button */}
+        <button onClick={() => addToCart(product.id)}>ADD TO CART</button>
+        <p className='productdisplay-right-category'>
+          <span>About the product :</span>Fresh product, In-budget, From local Market
+        </p>
+        <p className='productdisplay-right-category'>
+          <span>Other Info :</span>Product ID: {product.id}
+        </p>
       </div>
     </div>
   )
 }
 
-export default ProductDisplay
+export default ProductDisplay;

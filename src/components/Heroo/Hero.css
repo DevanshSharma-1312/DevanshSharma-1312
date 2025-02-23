@@ -38,7 +38,7 @@
         width: 85px;
     }
     
-    .hero-shopnow-btn{
+    /* .hero-shopnow-btn{
         display: flex;
         justify-content: center;
         align-items: center;
@@ -52,7 +52,33 @@
         font-size: 22px;
         font-weight: 500;
         cursor: pointer;
-    }
+        text-decoration: none;
+    } */
+    .hero-shopnow-btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+        width: 310px;
+        height: 70px;
+        border-radius: 75px;
+        margin-top: 30px;
+        background: #047124;
+        color: white;
+        font-size: 22px;
+        font-weight: 500;
+        cursor: pointer;
+        text-decoration: none;
+        transition: background 0.3s ease, transform 0.3s ease; /* Adding transition for smooth hover effect */
+      }
+      
+      .hero-shopnow-btn:hover {
+        background: #035e1b; /* Darken the button background on hover */
+        transform: translateY(-5px); /* Add a slight lift effect */
+      }
+      
+
+
 }
 .hero-right{
     flex: 1;

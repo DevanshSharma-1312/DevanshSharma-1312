@@ -1,6 +1,6 @@
 import React from 'react';
 import './LoginSignup.css';
-
+import {NavLink} from 'react-router-dom';
 const LoginSignup = () => {
   return (
     <div className='loginsignup'>
@@ -11,7 +11,10 @@ const LoginSignup = () => {
           <input type="email" placeholder='Email Address'/>
           <input type="password" placeholder='Password'/>
         </div>
+        <NavLink to='/login1'>
+
         <button>Continue</button>
+        </NavLink>
         <p className="loginsignup-login">
           Already have an account? <span>Login here</span>
         </p>
